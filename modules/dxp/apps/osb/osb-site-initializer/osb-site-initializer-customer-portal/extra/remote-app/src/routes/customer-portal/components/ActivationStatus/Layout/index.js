@@ -14,6 +14,14 @@ import classNames from 'classnames';
 import {StatusTag} from '../../../../../common/components';
 import {STATUS_TAG_TYPE_NAMES} from '../../../utils/constants';
 
+function truncateString(str, maxCharacter) {
+	if (str.length <= maxCharacter) {
+		return str;
+	}
+
+	return str.slice(0, maxCharacter) + '...';
+}
+
 const ActivationStatusLayout = ({
 	activationStatus,
 	activationStatusDate,
@@ -58,7 +66,7 @@ const ActivationStatusLayout = ({
 								tag="h5"
 								title={project.name}
 							>
-								{project.name}
+								{truncateString(project.name, 32)}
 
 								<p className="font-weight-normal mb-2 text-neutral-7 text-paragraph">
 									{activationStatusDate}
